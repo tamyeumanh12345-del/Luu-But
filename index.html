@@ -1,287 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Youth</title>
 
+  <link rel="stylesheet" href="style.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:'Quicksand', sans-serif;
-      background:linear-gradient(to bottom,#ffd6e7,#fff0f6,#e8f6ff);
-      overflow-x:hidden;
-      color:#444;
-      position:relative;
-    }
-
-    /* FLOATING BACKGROUND */
-
-    .bubble{
-      position:fixed;
-      border-radius:50%;
-      background:rgba(255,255,255,0.4);
-      animation:float linear infinite;
-      z-index:-1;
-    }
-
-    @keyframes float{
-      from{
-        transform:translateY(100vh);
-      }
-      to{
-        transform:translateY(-120vh);
-      }
-    }
-
-    /* HERO */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      text-align:center;
-      padding:40px;
-      position:relative;
-    }
-
-    .hero h1{
-      font-size:5rem;
-      color:#ff6fa5;
-      font-family:'Pacifico', cursive;
-      margin-bottom:20px;
-      animation:fadeUp 1.5s ease;
-    }
-
-    .hero p{
-      font-size:1.5rem;
-      max-width:700px;
-      line-height:1.8;
-      animation:fadeUp 2s ease;
-    }
-
-    .scroll{
-      margin-top:60px;
-      animation:bounce 2s infinite;
-      font-size:1rem;
-      opacity:.7;
-    }
-
-    /* MEMORY CARDS */
-
-    section{
-      padding:100px 10%;
-    }
-
-    .title{
-      text-align:center;
-      font-size:3rem;
-      margin-bottom:60px;
-      color:#ff77aa;
-      font-family:'Pacifico', cursive;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:40px;
-    }
-
-    .card{
-      background:white;
-      border-radius:30px;
-      overflow:hidden;
-      box-shadow:0 10px 30px rgba(0,0,0,.1);
-      transition:.4s;
-      position:relative;
-    }
-
-    .card:hover{
-      transform:translateY(-10px) rotate(1deg);
-    }
-
-    .card img{
-      width:100%;
-      height:250px;
-      object-fit:cover;
-    }
-
-    .card-content{
-      padding:25px;
-    }
-
-    .card h3{
-      font-size:1.7rem;
-      margin-bottom:15px;
-      color:#ff6fa5;
-    }
-
-    .card p{
-      line-height:1.8;
-      font-size:1.1rem;
-    }
-
-    /* LETTER */
-
-    .letter{
-      max-width:850px;
-      margin:auto;
-      background:rgba(255,255,255,0.7);
-      backdrop-filter:blur(10px);
-      padding:50px;
-      border-radius:35px;
-      box-shadow:0 10px 30px rgba(0,0,0,.1);
-      position:relative;
-    }
-
-    .letter::before{
-      content:"💌";
-      position:absolute;
-      top:-25px;
-      left:40px;
-      font-size:3rem;
-    }
-
-    .letter h2{
-      font-size:3rem;
-      color:#ff77aa;
-      margin-bottom:25px;
-      font-family:'Pacifico', cursive;
-    }
-
-    .letter p{
-      font-size:1.3rem;
-      line-height:2;
-    }
-
-    .sign{
-      margin-top:35px;
-      font-size:1.6rem;
-      color:#ff6fa5;
-      font-family:'Pacifico', cursive;
-    }
-
-    /* ENDING */
-
-    .ending{
-      min-height:80vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      text-align:center;
-      padding:40px;
-    }
-
-    .ending h2{
-      font-size:4rem;
-      color:#ff77aa;
-      margin-bottom:25px;
-      font-family:'Pacifico', cursive;
-    }
-
-    .ending p{
-      font-size:1.4rem;
-      max-width:700px;
-      line-height:2;
-    }
-
-    /* MUSIC BUTTON */
-
-    .music-btn{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      width:65px;
-      height:65px;
-      border:none;
-      border-radius:50%;
-      background:white;
-      box-shadow:0 5px 20px rgba(0,0,0,.15);
-      cursor:pointer;
-      font-size:1.5rem;
-      transition:.3s;
-      z-index:999;
-    }
-
-    .music-btn:hover{
-      transform:scale(1.1);
-    }
-
-    /* ANIMATION */
-
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(30px);
-      }
-
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @keyframes bounce{
-      0%,100%{
-        transform:translateY(0);
-      }
-
-      50%{
-        transform:translateY(10px);
-      }
-    }
-
-    /* MOBILE */
-
-    @media(max-width:768px){
-
-      .hero h1{
-        font-size:3.2rem;
-      }
-
-      .hero p{
-        font-size:1.2rem;
-      }
-
-      .title{
-        font-size:2.3rem;
-      }
-
-      .letter{
-        padding:35px;
-      }
-
-      .letter h2{
-        font-size:2.3rem;
-      }
-
-      .ending h2{
-        font-size:2.7rem;
-      }
-
-    }
-
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- MUSIC -->
-
-  <audio id="bgMusic" loop autoplay>
+  <audio id="music" loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
@@ -289,181 +21,68 @@
     🎵
   </button>
 
-  <!-- HERO -->
-
   <section class="hero">
 
-    <h1>Our Youth</h1>
+    <h1>Our Youth ✨</h1>
 
     <p>
-      Thanh xuân giống như một cơn mưa rào.
-      Dù từng bị ướt vì nó,
-      chúng ta vẫn muốn được quay lại thêm một lần nữa.
+      Thanh xuân rồi sẽ kết thúc,
+      nhưng ký ức sẽ luôn ở lại.
     </p>
 
-    <div class="scroll">
-      scroll down ↓
-    </div>
-
   </section>
 
-  <!-- MEMORIES -->
+  <section class="memories">
 
-  <section>
+    <div class="card">
+      <img src="https://picsum.photos/500/300?1">
 
-    <h2 class="title">
-      Little Memories ✨
-    </h2>
-
-    <div class="cards">
-
-      <div class="card">
-
-        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1974&auto=format&fit=crop">
-
-        <div class="card-content">
-
-          <h3>Những ngày đầu tiên 🌸</h3>
-
-          <p>
-            Từ những người xa lạ,
-            chúng ta đã trở thành một phần thanh xuân của nhau.
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="card">
-
-        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop">
-
-        <div class="card-content">
-
-          <h3>Những trận cười 💖</h3>
-
-          <p>
-            Có những khoảnh khắc ngốc nghếch,
-            nhưng lại là điều khiến chúng ta nhớ mãi.
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="card">
-
-        <img src="https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?q=80&w=1974&auto=format&fit=crop">
-
-        <div class="card-content">
-
-          <h3>Ngày chia tay 🌈</h3>
-
-          <p>
-            Chúng ta rồi sẽ lớn lên,
-            nhưng tuổi trẻ này sẽ luôn ở lại.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- LETTER -->
-
-  <section>
-
-    <div class="letter">
-
-      <h2>To My Favorite People 💌</h2>
+      <h2>Những ngày đầu 🌸</h2>
 
       <p>
-        Cảm ơn vì đã xuất hiện trong những năm tháng đẹp nhất.
-        Cảm ơn vì những lần cười đến đau bụng,
-        những giờ học buồn ngủ,
-        những trận bóng,
-        những lần cùng nhau vượt qua áp lực.
-        <br><br>
-
-        Sau này có thể mỗi người sẽ đi một hướng khác nhau,
-        nhưng hy vọng rằng,
-        khi nhớ lại khoảng thời gian này,
-        chúng ta vẫn sẽ mỉm cười thật nhẹ.
-        <br><br>
-
-        Vì chúng ta đã từng có một thanh xuân thật đẹp.
+        Từ những người xa lạ,
+        chúng ta đã trở thành gia đình.
       </p>
+    </div>
 
-      <div class="sign">
-        — forever with you ✨
-      </div>
+    <div class="card">
+      <img src="https://picsum.photos/500/300?2">
 
+      <h2>Những trận cười 💖</h2>
+
+      <p>
+        Có những điều ngốc nghếch
+        nhưng lại đáng nhớ nhất.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/500/300?3">
+
+      <h2>Ngày chia tay 🌈</h2>
+
+      <p>
+        Chúng ta rồi sẽ trưởng thành,
+        nhưng tuổi trẻ sẽ mãi ở đây.
+      </p>
     </div>
 
   </section>
 
-  <!-- ENDING -->
+  <section class="letter">
 
-  <section class="ending">
-
-    <h2>Thank You 🌷</h2>
+    <h2>To My Favorite People 💌</h2>
 
     <p>
-      Một ngày nào đó,
-      khi vô tình mở lại trang web này,
-      hy vọng chúng ta sẽ nhớ rằng:
-      mình đã từng hạnh phúc đến thế nào.
+      Cảm ơn vì đã xuất hiện trong những năm tháng đẹp nhất.
+      Cảm ơn vì mọi tiếng cười,
+      mọi khoảnh khắc,
+      và cả những ký ức không thể quay lại.
     </p>
 
   </section>
 
-  <!-- SCRIPT -->
-
-  <script>
-
-    /* MUSIC */
-
-    const music = document.getElementById("bgMusic");
-
-    function toggleMusic(){
-
-      if(music.paused){
-        music.play();
-      }else{
-        music.pause();
-      }
-
-    }
-
-    /* FLOATING BUBBLES */
-
-    for(let i = 0; i < 25; i++){
-
-      const bubble = document.createElement("div");
-
-      bubble.classList.add("bubble");
-
-      let size = Math.random() * 60 + 20;
-
-      bubble.style.width = size + "px";
-      bubble.style.height = size + "px";
-
-      bubble.style.left = Math.random() * 100 + "vw";
-
-      bubble.style.animationDuration =
-      Math.random() * 10 + 10 + "s";
-
-      bubble.style.opacity =
-      Math.random() * 0.5;
-
-      document.body.appendChild(bubble);
-
-    }
-
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
