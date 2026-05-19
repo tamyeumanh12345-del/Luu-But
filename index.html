@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Last Bell</title>
+  <title>Our Youth</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -17,160 +18,206 @@
     }
 
     body{
-      background:#0f1720;
-      color:#f5f5f5;
-      font-family:'Cormorant Garamond', serif;
+      font-family:'Quicksand', sans-serif;
+      background:linear-gradient(to bottom,#ffd6e7,#fff0f6,#e8f6ff);
       overflow-x:hidden;
+      color:#444;
+      position:relative;
     }
 
-    section{
-      min-height:100vh;
-      padding:100px 10%;
-      position:relative;
+    /* FLOATING BACKGROUND */
+
+    .bubble{
+      position:fixed;
+      border-radius:50%;
+      background:rgba(255,255,255,0.4);
+      animation:float linear infinite;
+      z-index:-1;
+    }
+
+    @keyframes float{
+      from{
+        transform:translateY(100vh);
+      }
+      to{
+        transform:translateY(-120vh);
+      }
     }
 
     /* HERO */
 
     .hero{
+      min-height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
       flex-direction:column;
       text-align:center;
-      background:
-      linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.7)),
-      url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1974&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
+      padding:40px;
+      position:relative;
     }
 
     .hero h1{
       font-size:5rem;
-      letter-spacing:3px;
+      color:#ff6fa5;
+      font-family:'Pacifico', cursive;
       margin-bottom:20px;
-      animation:fadeUp 2s ease;
+      animation:fadeUp 1.5s ease;
     }
 
     .hero p{
-      font-size:1.7rem;
-      width:70%;
-      line-height:1.7;
-      opacity:.9;
-      animation:fadeUp 3s ease;
+      font-size:1.5rem;
+      max-width:700px;
+      line-height:1.8;
+      animation:fadeUp 2s ease;
     }
 
     .scroll{
-      position:absolute;
-      bottom:40px;
+      margin-top:60px;
+      animation:bounce 2s infinite;
       font-size:1rem;
       opacity:.7;
-      animation:float 2s infinite;
     }
 
-    /* MEMORY */
+    /* MEMORY CARDS */
 
-    .memory{
-      display:flex;
-      align-items:center;
-      gap:60px;
-      margin-bottom:120px;
-      flex-wrap:wrap;
+    section{
+      padding:100px 10%;
     }
 
-    .memory img{
-      width:420px;
-      max-width:100%;
-      border-radius:18px;
-      transform:rotate(-2deg);
-      box-shadow:0 10px 40px rgba(0,0,0,.45);
-      transition:.5s;
-    }
-
-    .memory img:hover{
-      transform:scale(1.03) rotate(0deg);
-    }
-
-    .memory-text{
-      flex:1;
-      min-width:280px;
-    }
-
-    .memory-text h2{
+    .title{
+      text-align:center;
       font-size:3rem;
-      margin-bottom:20px;
+      margin-bottom:60px;
+      color:#ff77aa;
+      font-family:'Pacifico', cursive;
     }
 
-    .memory-text p{
-      font-size:1.4rem;
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:40px;
+    }
+
+    .card{
+      background:white;
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,.1);
+      transition:.4s;
+      position:relative;
+    }
+
+    .card:hover{
+      transform:translateY(-10px) rotate(1deg);
+    }
+
+    .card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:25px;
+    }
+
+    .card h3{
+      font-size:1.7rem;
+      margin-bottom:15px;
+      color:#ff6fa5;
+    }
+
+    .card p{
       line-height:1.8;
-      opacity:.9;
+      font-size:1.1rem;
     }
 
     /* LETTER */
 
-    .letter-section{
-      text-align:center;
-      background:#111927;
-    }
-
-    .letter-title{
-      font-size:4rem;
-      margin-bottom:50px;
-    }
-
     .letter{
-      background:#f5efe6;
-      color:#222;
-      max-width:800px;
+      max-width:850px;
       margin:auto;
+      background:rgba(255,255,255,0.7);
+      backdrop-filter:blur(10px);
       padding:50px;
-      border-radius:20px;
-      box-shadow:0 15px 40px rgba(0,0,0,.4);
-      text-align:left;
-      transform:rotate(-1deg);
+      border-radius:35px;
+      box-shadow:0 10px 30px rgba(0,0,0,.1);
+      position:relative;
     }
 
-    .letter h3{
-      font-size:2.5rem;
+    .letter::before{
+      content:"💌";
+      position:absolute;
+      top:-25px;
+      left:40px;
+      font-size:3rem;
+    }
+
+    .letter h2{
+      font-size:3rem;
+      color:#ff77aa;
       margin-bottom:25px;
-      font-family:'Caveat', cursive;
+      font-family:'Pacifico', cursive;
     }
 
     .letter p{
-      font-size:1.5rem;
+      font-size:1.3rem;
       line-height:2;
     }
 
-    .signature{
-      margin-top:40px;
-      font-family:'Caveat', cursive;
-      font-size:2rem;
+    .sign{
+      margin-top:35px;
+      font-size:1.6rem;
+      color:#ff6fa5;
+      font-family:'Pacifico', cursive;
     }
 
     /* ENDING */
 
     .ending{
+      min-height:80vh;
       display:flex;
       justify-content:center;
       align-items:center;
       flex-direction:column;
       text-align:center;
-      background:
-      linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.8)),
-      url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
+      padding:40px;
     }
 
     .ending h2{
       font-size:4rem;
-      margin-bottom:30px;
+      color:#ff77aa;
+      margin-bottom:25px;
+      font-family:'Pacifico', cursive;
     }
 
     .ending p{
-      font-size:1.7rem;
-      width:70%;
-      line-height:1.8;
+      font-size:1.4rem;
+      max-width:700px;
+      line-height:2;
+    }
+
+    /* MUSIC BUTTON */
+
+    .music-btn{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      width:65px;
+      height:65px;
+      border:none;
+      border-radius:50%;
+      background:white;
+      box-shadow:0 5px 20px rgba(0,0,0,.15);
+      cursor:pointer;
+      font-size:1.5rem;
+      transition:.3s;
+      z-index:999;
+    }
+
+    .music-btn:hover{
+      transform:scale(1.1);
     }
 
     /* ANIMATION */
@@ -178,18 +225,23 @@
     @keyframes fadeUp{
       from{
         opacity:0;
-        transform:translateY(40px);
+        transform:translateY(30px);
       }
+
       to{
         opacity:1;
         transform:translateY(0);
       }
     }
 
-    @keyframes float{
-      0%{transform:translateY(0);}
-      50%{transform:translateY(-10px);}
-      100%{transform:translateY(0);}
+    @keyframes bounce{
+      0%,100%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(10px);
+      }
     }
 
     /* MOBILE */
@@ -197,285 +249,124 @@
     @media(max-width:768px){
 
       .hero h1{
-        font-size:3rem;
+        font-size:3.2rem;
       }
 
-      .hero p,
-      .ending p{
-        width:100%;
-        font-size:1.3rem;
+      .hero p{
+        font-size:1.2rem;
       }
 
-      .memory{
-        flex-direction:column;
-      }
-
-      .memory-text h2{
-        font-size:2.2rem;
+      .title{
+        font-size:2.3rem;
       }
 
       .letter{
-        padding:30px;
+        padding:35px;
       }
 
-      .letter p{
-        font-size:1.25rem;
+      .letter h2{
+        font-size:2.3rem;
       }
 
       .ending h2{
-        font-size:2.5rem;
+        font-size:2.7rem;
       }
+
     }
 
   </style>
 </head>
 
 <body>
-<!-- THÊM ĐOẠN NÀY NGAY SAU <body> -->
 
-<div class="stars"></div>
+  <!-- MUSIC -->
 
-<audio autoplay loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+  <audio id="bgMusic" loop autoplay>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
-<!-- THÊM NÚT NHẠC -->
+  <button class="music-btn" onclick="toggleMusic()">
+    🎵
+  </button>
 
-<button class="music-btn" onclick="toggleMusic()">
-  🎵
-</button>
-
-<!-- THÊM ĐOẠN NÀY VÀO CSS -->
-
-<style>
-
-/* BACKGROUND STARS */
-
-.stars{
-  position:fixed;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  background-image:
-  radial-gradient(white 1px, transparent 1px);
-  background-size:40px 40px;
-  opacity:0.12;
-  z-index:-1;
-}
-
-/* MUSIC BUTTON */
-
-.music-btn{
-  position:fixed;
-  right:25px;
-  bottom:25px;
-  width:60px;
-  height:60px;
-  border:none;
-  border-radius:50%;
-  background:#ffffff20;
-  backdrop-filter:blur(10px);
-  color:white;
-  font-size:1.5rem;
-  cursor:pointer;
-  transition:.3s;
-  z-index:999;
-}
-
-.music-btn:hover{
-  transform:scale(1.1);
-  background:#ffffff35;
-}
-
-/* FLOATING HEARTS */
-
-.heart{
-  position:fixed;
-  color:#ffb6c1;
-  animation:floatHeart linear forwards;
-  pointer-events:none;
-  z-index:999;
-}
-
-@keyframes floatHeart{
-  from{
-    transform:translateY(0) scale(1);
-    opacity:1;
-  }
-
-  to{
-    transform:translateY(-100vh) scale(1.8);
-    opacity:0;
-  }
-}
-
-/* POLAROID STYLE */
-
-.memory img{
-  border:10px solid white;
-  border-bottom:40px solid white;
-  background:white;
-}
-
-/* GLASS EFFECT */
-
-.letter{
-  background:rgba(255,255,255,0.88);
-  backdrop-filter:blur(10px);
-}
-
-/* CUTE GLOW */
-
-.hero h1,
-.ending h2{
-  text-shadow:
-  0 0 10px rgba(255,255,255,.4),
-  0 0 20px rgba(255,255,255,.2);
-}
-
-/* SPARKLE */
-
-.sparkle{
-  position:absolute;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:white;
-  animation:sparkle 2s infinite;
-}
-
-@keyframes sparkle{
-  0%{
-    opacity:0;
-    transform:scale(0);
-  }
-
-  50%{
-    opacity:1;
-    transform:scale(1);
-  }
-
-  100%{
-    opacity:0;
-    transform:scale(0);
-  }
-}
-
-</style>
-
-<!-- THÊM ĐOẠN NÀY TRƯỚC </body> -->
-
-<script>
-
-const audio = document.querySelector("audio");
-
-function toggleMusic(){
-  if(audio.paused){
-    audio.play();
-  }else{
-    audio.pause();
-  }
-}
-
-/* FLOATING HEARTS */
-
-setInterval(() => {
-
-  const heart = document.createElement("div");
-
-  heart.classList.add("heart");
-
-  heart.innerHTML = "❤";
-
-  heart.style.left = Math.random() * window.innerWidth + "px";
-
-  heart.style.fontSize =
-  Math.random() * 20 + 15 + "px";
-
-  heart.style.animationDuration =
-  Math.random() * 3 + 3 + "s";
-
-  document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 6000);
-
-}, 700);
-
-/* RANDOM SPARKLES */
-
-for(let i = 0; i < 30; i++){
-
-  const sparkle = document.createElement("div");
-
-  sparkle.classList.add("sparkle");
-
-  sparkle.style.top =
-  Math.random() * 100 + "%";
-
-  sparkle.style.left =
-  Math.random() * 100 + "%";
-
-  sparkle.style.animationDelay =
-  Math.random() * 2 + "s";
-
-  document.body.appendChild(sparkle);
-}
-
-</script>
   <!-- HERO -->
 
   <section class="hero">
-    <h1>THE LAST BELL</h1>
+
+    <h1>Our Youth</h1>
 
     <p>
-      Mới ngày nào còn bỡ ngỡ bước vào lớp học ấy,
-      vậy mà giờ đây chúng ta đã sắp trở thành ký ức của nhau.
+      Thanh xuân giống như một cơn mưa rào.
+      Dù từng bị ướt vì nó,
+      chúng ta vẫn muốn được quay lại thêm một lần nữa.
     </p>
 
     <div class="scroll">
       scroll down ↓
     </div>
+
   </section>
 
   <!-- MEMORIES -->
 
   <section>
 
-    <div class="memory">
+    <h2 class="title">
+      Little Memories ✨
+    </h2>
 
-      <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?q=80&w=1974&auto=format&fit=crop">
+    <div class="cards">
 
-      <div class="memory-text">
-        <h2>Những ngày đầu tiên</h2>
+      <div class="card">
 
-        <p>
-          Ngày đó chẳng ai thật sự quen ai.
-          Chúng ta chỉ là những con người vô tình ngồi chung một lớp học.
-          Không ai biết rồi sẽ có những mối quan hệ
-          trở thành một phần thanh xuân của mình.
-        </p>
+        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1974&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <h3>Những ngày đầu tiên 🌸</h3>
+
+          <p>
+            Từ những người xa lạ,
+            chúng ta đã trở thành một phần thanh xuân của nhau.
+          </p>
+
+        </div>
+
       </div>
 
-    </div>
+      <div class="card">
 
-    <div class="memory">
+        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop">
 
-      <div class="memory-text">
-        <h2>Những ngày đáng nhớ nhất</h2>
+        <div class="card-content">
 
-        <p>
-          Những buổi ngủ gật vì học thêm,
-          những lần cười không kiểm soát trong giờ,
-          những trận bóng dưới trời chiều,
-          những ngày tưởng chừng áp lực đến nghẹt thở...
-          cuối cùng đều trở thành điều khiến ta nhớ nhất.
-        </p>
+          <h3>Những trận cười 💖</h3>
+
+          <p>
+            Có những khoảnh khắc ngốc nghếch,
+            nhưng lại là điều khiến chúng ta nhớ mãi.
+          </p>
+
+        </div>
+
       </div>
 
-      <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=1974&auto=format&fit=crop">
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?q=80&w=1974&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <h3>Ngày chia tay 🌈</h3>
+
+          <p>
+            Chúng ta rồi sẽ lớn lên,
+            nhưng tuổi trẻ này sẽ luôn ở lại.
+          </p>
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -483,38 +374,31 @@ for(let i = 0; i < 30; i++){
 
   <!-- LETTER -->
 
-  <section class="letter-section">
-
-    <h2 class="letter-title">
-      A Letter To My Class
-    </h2>
+  <section>
 
     <div class="letter">
 
-      <h3>Dear 12A,</h3>
+      <h2>To My Favorite People 💌</h2>
 
       <p>
-        Cảm ơn vì đã xuất hiện trong những năm tháng đẹp nhất của tuổi trẻ.
-        Cảm ơn vì những lần cùng nhau trưởng thành,
-        cùng nhau áp lực,
-        cùng nhau vui đến mức quên cả thời gian.
+        Cảm ơn vì đã xuất hiện trong những năm tháng đẹp nhất.
+        Cảm ơn vì những lần cười đến đau bụng,
+        những giờ học buồn ngủ,
+        những trận bóng,
+        những lần cùng nhau vượt qua áp lực.
         <br><br>
 
-        Sau này có thể chúng ta sẽ đi rất xa,
-        gặp những con người mới,
-        sống những cuộc sống hoàn toàn khác.
-        Nhưng mình tin rằng,
-        sẽ luôn có một ngày nào đó,
-        khi vô tình nghe tiếng trống trường,
-        chúng ta lại nhớ về nơi này.
+        Sau này có thể mỗi người sẽ đi một hướng khác nhau,
+        nhưng hy vọng rằng,
+        khi nhớ lại khoảng thời gian này,
+        chúng ta vẫn sẽ mỉm cười thật nhẹ.
         <br><br>
 
-        Và nhận ra rằng:
-        chúng ta đã từng có một thanh xuân thật đẹp.
+        Vì chúng ta đã từng có một thanh xuân thật đẹp.
       </p>
 
-      <div class="signature">
-        — 12A Forever
+      <div class="sign">
+        — forever with you ✨
       </div>
 
     </div>
@@ -525,18 +409,61 @@ for(let i = 0; i < 30; i++){
 
   <section class="ending">
 
-    <h2>Thank You.</h2>
+    <h2>Thank You 🌷</h2>
 
     <p>
       Một ngày nào đó,
-      chúng ta sẽ mở lại trang web này,
-      nhìn lại những bức ảnh cũ,
-      và nhận ra:
-      hóa ra khi ấy,
-      mình đang sống trong những ngày đẹp nhất cuộc đời.
+      khi vô tình mở lại trang web này,
+      hy vọng chúng ta sẽ nhớ rằng:
+      mình đã từng hạnh phúc đến thế nào.
     </p>
 
   </section>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    /* MUSIC */
+
+    const music = document.getElementById("bgMusic");
+
+    function toggleMusic(){
+
+      if(music.paused){
+        music.play();
+      }else{
+        music.pause();
+      }
+
+    }
+
+    /* FLOATING BUBBLES */
+
+    for(let i = 0; i < 25; i++){
+
+      const bubble = document.createElement("div");
+
+      bubble.classList.add("bubble");
+
+      let size = Math.random() * 60 + 20;
+
+      bubble.style.width = size + "px";
+      bubble.style.height = size + "px";
+
+      bubble.style.left = Math.random() * 100 + "vw";
+
+      bubble.style.animationDuration =
+      Math.random() * 10 + 10 + "s";
+
+      bubble.style.opacity =
+      Math.random() * 0.5;
+
+      document.body.appendChild(bubble);
+
+    }
+
+  </script>
 
 </body>
 </html>
