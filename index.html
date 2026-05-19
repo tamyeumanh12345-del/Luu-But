@@ -11,6 +11,127 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* CLICK LETTER */
+
+.letter-click-section{
+  padding:120px 10%;
+  text-align:center;
+}
+
+.envelope-wrapper{
+  margin:auto;
+  width:320px;
+  cursor:pointer;
+  perspective:1000px;
+}
+
+.envelope{
+  position:relative;
+  width:320px;
+  height:220px;
+  background:#ffb6cf;
+  border-radius:0 0 20px 20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+/* NẮP THƯ */
+
+.envelope::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100%;
+
+  background:#ff8db6;
+
+  clip-path:polygon(0 0,50% 50%,100% 0);
+
+  transform-origin:top;
+
+  transition:1s;
+  z-index:5;
+}
+
+/* GIẤY */
+
+.letter-paper{
+
+  position:absolute;
+
+  width:90%;
+  height:190px;
+
+  background:white;
+
+  left:5%;
+  bottom:0;
+
+  border-radius:15px;
+
+  padding:20px;
+
+  transition:1s;
+
+  z-index:2;
+
+  overflow:auto;
+}
+
+.letter-paper h3{
+  color:#ff6da9;
+  margin-bottom:15px;
+  font-family:'Pacifico', cursive;
+  font-size:1.8rem;
+}
+
+.letter-paper p{
+  line-height:1.7;
+  font-size:1rem;
+}
+
+.letter-paper span{
+  display:block;
+  margin-top:15px;
+  color:#ff6da9;
+  font-family:'Pacifico', cursive;
+}
+
+/* OPEN EFFECT */
+
+.envelope-wrapper.open .envelope::before{
+  transform:rotateX(180deg);
+}
+
+.envelope-wrapper.open .letter-paper{
+  transform:translateY(-120px);
+}
+
+/* TEXT */
+
+.click-text{
+  margin-top:25px;
+  color:#ff6da9;
+  font-size:1.1rem;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .envelope-wrapper{
+    width:280px;
+  }
+
+  .envelope{
+    width:280px;
+    height:200px;
+  }
+
+}
 
     *{
       margin:0;
@@ -318,47 +439,6 @@
 </head>
 
 <body>
-<!-- THÊM PHẦN NÀY VÀO BODY -->
-
-<section class="letter-click-section">
-
-  <h2 class="title">
-    Open When You Miss Us 💌
-  </h2>
-
-  <!-- PHONG THƯ -->
-
-  <div class="envelope-wrapper" onclick="openLetter()">
-
-    <div class="envelope">
-
-      <div class="letter-paper" id="letterPaper">
-
-        <h3>To My Favorite People 🌷</h3>
-
-        <p>
-          Có thể sau này chúng ta sẽ không còn gặp nhau mỗi ngày nữa.
-          Nhưng hy vọng rằng,
-          mỗi khi nhìn lại những tấm ảnh cũ,
-          chúng ta sẽ nhớ rằng:
-          mình đã từng có một thanh xuân thật đẹp bên nhau.
-        </p>
-
-        <span>
-          — forever with you ✨
-        </span>
-
-      </div>
-
-    </div>
-
-    <p class="click-text">
-      click to open 💖
-    </p>
-
-  </div>
-
-</section>
   <!-- MUSIC -->
 
   <audio id="music" loop>
@@ -493,6 +573,47 @@
     </div>
 
   </section>
+  <!-- THÊM PHẦN NÀY VÀO BODY -->
+
+<section class="letter-click-section">
+
+  <h2 class="title">
+    Open When You Miss Us 💌
+  </h2>
+
+  <!-- PHONG THƯ -->
+
+  <div class="envelope-wrapper" onclick="openLetter()">
+
+    <div class="envelope">
+
+      <div class="letter-paper" id="letterPaper">
+
+        <h3>To My Favorite People 🌷</h3>
+
+        <p>
+          Có thể sau này chúng ta sẽ không còn gặp nhau mỗi ngày nữa.
+          Nhưng hy vọng rằng,
+          mỗi khi nhìn lại những tấm ảnh cũ,
+          chúng ta sẽ nhớ rằng:
+          mình đã từng có một thanh xuân thật đẹp bên nhau.
+        </p>
+
+        <span>
+          — forever with you ✨
+        </span>
+
+      </div>
+
+    </div>
+
+    <p class="click-text">
+      click to open 💖
+    </p>
+
+  </div>
+
+</section>
 
   <!-- ENDING -->
 
@@ -556,6 +677,17 @@
     }, 500);
 
   </script>
+<script>
 
+function openLetter(){
+
+  const envelope =
+  document.querySelector(".envelope-wrapper");
+
+  envelope.classList.toggle("open");
+
+}
+
+</script>
 </body>
 </html>
